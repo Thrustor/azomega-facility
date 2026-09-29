@@ -75,12 +75,14 @@ const copy = {
       },
     ],
     contactLabel: "Contact",
-    contactTitle: "Tell us about your site.",
+    contactTitle: "Let's find out what we can worry about on your behalf.",
     contactLede: "Send a note. We reply with a clear next step — not a deck.",
+    contactEmailLabel: "Email",
+    contactPhoneLabel: "Give us a call",
+    contactPhoneNote: "Coming soon",
     contactPanelTitle: "Send a note",
     contactPanelBody: "A short description of the building and what you need is enough to start.",
     contactPanelCta: "Email hello@azomega.lv",
-    contactPhoneNote: "Phone on request",
     footer: "AZΩ Facility · Riga · Facility maintenance",
   },
   lv: {
@@ -153,12 +155,14 @@ const copy = {
       },
     ],
     contactLabel: "Kontakti",
-    contactTitle: "Pastāstiet par savu objektu.",
+    contactTitle: "Noskaidrosim, par ko varam uztraukties jūsu vietā.",
     contactLede: "Uzrakstiet. Atbildēsim ar skaidru nākamo soli — ne ar prezentāciju.",
+    contactEmailLabel: "E-pasts",
+    contactPhoneLabel: "Piezvaniet mums",
+    contactPhoneNote: "Drīzumā",
     contactPanelTitle: "Uzrakstiet mums",
     contactPanelBody: "Īss ēkas un vajadzību apraksts ir pietiekams, lai sāktu.",
     contactPanelCta: "Rakstīt hello@azomega.lv",
-    contactPhoneNote: "Tālrunis pēc pieprasījuma",
     footer: "AZΩ Facility · Rīga · Telpu uzturēšana",
   },
 } as const;
@@ -395,20 +399,27 @@ export function SitePage() {
                 {t.contactTitle}
               </h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-muted">{t.contactLede}</p>
-              <ul className="mt-10 space-y-4">
-                <li>
-                  <a
-                    className="text-lg font-medium text-fg underline decoration-line underline-offset-4 transition-colors hover:decoration-pine"
-                    href="mailto:hello@azomega.lv"
-                  >
-                    hello@azomega.lv
-                  </a>
-                </li>
-                <li className="font-mono text-sm tracking-wide text-muted">
-                  {t.contactPhoneNote}
-                </li>
-                <li className="font-mono text-xs tracking-[0.2em] text-muted">{t.place}</li>
-              </ul>
+              <dl className="mt-10 grid gap-6 sm:max-w-md">
+                <div>
+                  <dt className="font-mono text-xs tracking-[0.18em] text-copper">{t.contactEmailLabel}</dt>
+                  <dd className="mt-2">
+                    <a
+                      className="text-lg font-medium text-fg underline decoration-line underline-offset-4 transition-colors hover:decoration-pine"
+                      href="mailto:hello@azomega.lv"
+                    >
+                      hello@azomega.lv
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-xs tracking-[0.18em] text-copper">{t.contactPhoneLabel}</dt>
+                  <dd className="mt-2 font-mono text-lg tracking-wide text-muted">{t.contactPhoneNote}</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-xs tracking-[0.18em] text-copper">{t.place}</dt>
+                  <dd className="mt-2 text-muted">Latvia</dd>
+                </div>
+              </dl>
             </div>
             <div className="flex flex-col justify-between rounded-2xl border border-line bg-base-soft/70 p-8 sm:p-10">
               <div>
