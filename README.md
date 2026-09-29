@@ -1,6 +1,8 @@
 # azomega-facility
 
-Bilingual (EN/LV) marketing site for **AZΩ Facility** — facility maintenance in Riga.
+Marketing site for **AZΩ Facility** — facility maintenance in Riga.
+
+English is the primary language; a Latvian toggle is available.
 
 Contact: [hello@azomega.lv](mailto:hello@azomega.lv)
 
