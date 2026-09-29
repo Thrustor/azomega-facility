@@ -13,6 +13,8 @@ const copy = {
     heroLine: "Your sites stay ready. That is the job.",
     heroLede:
       "Cleaning, upkeep, air, water, plants, and the paperwork that proves it. One team in Riga. Clear schedules. No theatre.",
+    heroCta: "Tell us about your site",
+    heroSecondary: "See how we work",
     aboutLabel: "About",
     aboutTitle: "Reliable for the people who decide. Dignified for the people who do the work.",
     aboutBody:
@@ -75,6 +77,10 @@ const copy = {
     contactLabel: "Contact",
     contactTitle: "Tell us about your site.",
     contactLede: "Send a note. We reply with a clear next step — not a deck.",
+    contactPanelTitle: "Send a note",
+    contactPanelBody: "A short description of the building and what you need is enough to start.",
+    contactPanelCta: "Email hello@azomega.lv",
+    contactPhoneNote: "Phone on request",
     footer: "AZΩ Facility · Riga · Facility maintenance",
   },
   lv: {
@@ -85,6 +91,8 @@ const copy = {
     heroLine: "Jūsu objekti paliek gatavi. Tas ir darbs.",
     heroLede:
       "Uzkopšana, uzturēšana, gaiss, ūdens, augi un dokumentācija. Viena komanda Rīgā. Skaidri grafiki. Bez teātra.",
+    heroCta: "Pastāstiet par savu objektu",
+    heroSecondary: "Kā mēs strādājam",
     aboutLabel: "Par mums",
     aboutTitle: "Uzticami tiem, kas lemj. Cieņpilni tiem, kas dara darbu.",
     aboutBody:
@@ -147,6 +155,10 @@ const copy = {
     contactLabel: "Kontakti",
     contactTitle: "Pastāstiet par savu objektu.",
     contactLede: "Uzrakstiet. Atbildēsim ar skaidru nākamo soli — ne ar prezentāciju.",
+    contactPanelTitle: "Uzrakstiet mums",
+    contactPanelBody: "Īss ēkas un vajadzību apraksts ir pietiekams, lai sāktu.",
+    contactPanelCta: "Rakstīt hello@azomega.lv",
+    contactPhoneNote: "Tālrunis pēc pieprasījuma",
     footer: "AZΩ Facility · Rīga · Telpu uzturēšana",
   },
 } as const;
@@ -154,10 +166,21 @@ const copy = {
 function Mark({ compact = false }: { compact?: boolean }) {
   return (
     <span className="block leading-none">
-      <span className={"font-mono tracking-tight " + (compact ? "text-sm" : "text-base")}>
-        A Z <span className="text-amber">Ω</span>
+      <span
+        className={
+          "font-mono tracking-tight text-fg " + (compact ? "text-sm" : "text-base")
+        }
+      >
+        A Z <span className="text-copper">Ω</span>
       </span>
-      <span className={"mt-1 block font-mono tracking-widest text-muted text-xs"}>FACILITY</span>
+      <span
+        className={
+          "mt-1.5 block font-mono tracking-[0.22em] text-muted " +
+          (compact ? "text-[10px]" : "text-xs")
+        }
+      >
+        FACILITY
+      </span>
     </span>
   );
 }
@@ -183,34 +206,34 @@ export function SitePage() {
 
   return (
     <div id="top" className="min-h-screen bg-base text-fg">
-      <header className="sticky top-0 z-40 border-b border-line bg-base/95 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
+      <header className="sticky top-0 z-40 border-b border-line/80 bg-base/90 backdrop-blur-md">
+        <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-10">
           <a href="#top" className="py-2" aria-label="AZΩ Facility">
             <Mark compact />
           </a>
-          <div className="flex items-center gap-3 sm:gap-6">
-            <nav className="hidden items-center gap-5 sm:flex" aria-label="Primary">
+          <div className="flex items-center gap-2 sm:gap-5">
+            <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
               <a
                 href="#about"
-                className="inline-flex h-11 items-center font-mono text-xs tracking-widest text-muted hover:text-fg"
+                className="inline-flex h-11 items-center rounded-md px-3 text-sm text-muted transition-colors hover:bg-base-soft hover:text-fg"
               >
                 {t.navAbout}
               </a>
               <a
                 href="#services"
-                className="inline-flex h-11 items-center font-mono text-xs tracking-widest text-muted hover:text-fg"
+                className="inline-flex h-11 items-center rounded-md px-3 text-sm text-muted transition-colors hover:bg-base-soft hover:text-fg"
               >
                 {t.navServices}
               </a>
               <a
                 href="#contact"
-                className="inline-flex h-11 items-center font-mono text-xs tracking-widest text-muted hover:text-fg"
+                className="inline-flex h-11 items-center rounded-md px-3 text-sm text-muted transition-colors hover:bg-base-soft hover:text-fg"
               >
                 {t.navContact}
               </a>
             </nav>
             <div
-              className="flex items-center font-mono text-xs tracking-widest"
+              className="flex items-center rounded-full border border-line bg-base-soft/60 px-1 font-mono text-[11px] tracking-widest"
               role="group"
               aria-label="Language"
             >
@@ -218,18 +241,21 @@ export function SitePage() {
                 type="button"
                 aria-pressed={lang === "en"}
                 onClick={() => choose("en")}
-                className={"inline-flex h-11 items-center px-2 " + (lang === "en" ? "text-fg" : "text-muted")}
+                className={
+                  "inline-flex h-9 items-center rounded-full px-2.5 transition-colors " +
+                  (lang === "en" ? "bg-pine text-base" : "text-muted hover:text-fg")
+                }
               >
                 EN
               </button>
-              <span className="text-line" aria-hidden="true">
-                /
-              </span>
               <button
                 type="button"
                 aria-pressed={lang === "lv"}
                 onClick={() => choose("lv")}
-                className={"inline-flex h-11 items-center px-2 " + (lang === "lv" ? "text-fg" : "text-muted")}
+                className={
+                  "inline-flex h-9 items-center rounded-full px-2.5 transition-colors " +
+                  (lang === "lv" ? "bg-pine text-base" : "text-muted hover:text-fg")
+                }
               >
                 LV
               </button>
@@ -239,104 +265,171 @@ export function SitePage() {
       </header>
 
       <main>
-        <section className="mx-auto max-w-5xl px-5 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28">
-          <p className="font-mono text-xs tracking-widest text-amber">{t.place}</p>
-          <h1 className="mt-6 font-mono text-hero">
-            AZ<span className="text-amber">Ω</span> Facility
-          </h1>
-          <p className="mt-8 max-w-2xl text-xl leading-snug sm:text-2xl">{t.heroLine}</p>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{t.heroLede}</p>
+        {/* Hero */}
+        <section className="relative overflow-hidden border-b border-line">
+          <div className="arch-grid absolute inset-0" aria-hidden="true" />
+          <div className="grain absolute inset-0" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -right-8 top-8 select-none font-mono text-[min(42vw,22rem)] leading-none text-pine/[0.07] sm:right-4 sm:top-0"
+            aria-hidden="true"
+          >
+            Ω
+          </div>
+          <div className="relative mx-auto max-w-6xl px-5 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:px-10">
+            <p className="font-mono text-xs tracking-[0.2em] text-copper">{t.place}</p>
+            <h1 className="mt-6 max-w-4xl font-sans text-hero font-medium text-fg">
+              AZ<span className="text-copper">Ω</span> Facility
+            </h1>
+            <p className="mt-8 max-w-2xl text-2xl leading-snug tracking-tight text-fg sm:text-3xl">
+              {t.heroLine}
+            </p>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{t.heroLede}</p>
+            <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+              <a
+                href="mailto:hello@azomega.lv"
+                className="inline-flex h-12 items-center justify-center rounded-md bg-pine px-6 text-sm font-medium tracking-wide text-base transition-colors hover:bg-pine-deep focus-visible:outline-offset-4"
+              >
+                {t.heroCta}
+              </a>
+              <a
+                href="#approach"
+                className="inline-flex h-12 items-center text-sm font-medium text-muted underline decoration-line underline-offset-4 transition-colors hover:text-fg hover:decoration-pine"
+              >
+                {t.heroSecondary}
+              </a>
+            </div>
+          </div>
         </section>
 
+        {/* About */}
         <section
           id="about"
-          className="scroll-mt-20 border-t border-line"
+          className="scroll-mt-[5rem] border-b border-line bg-base-soft/40"
           aria-labelledby="about-heading"
         >
-          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
-            <p className="font-mono text-xs tracking-widest text-muted">{t.aboutLabel}</p>
-            <h2 id="about-heading" className="mt-4 max-w-2xl font-mono text-2xl leading-snug sm:text-3xl">
-              {t.aboutTitle}
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{t.aboutBody}</p>
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-12 lg:gap-12 lg:px-10">
+            <div className="lg:col-span-4">
+              <p className="font-mono text-xs tracking-[0.2em] text-copper">{t.aboutLabel}</p>
+            </div>
+            <div className="lg:col-span-8">
+              <h2 id="about-heading" className="max-w-2xl text-display text-fg">
+                {t.aboutTitle}
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{t.aboutBody}</p>
+            </div>
           </div>
         </section>
 
+        {/* Services */}
         <section
           id="services"
-          className="scroll-mt-20 mx-auto max-w-5xl px-5 pb-8 sm:px-8"
+          className="scroll-mt-[5rem]"
           aria-labelledby="services-heading"
         >
-          <p className="mb-2 font-mono text-xs tracking-widest text-muted">{t.servicesLabel}</p>
-          <h2 id="services-heading" className="mb-10 font-mono text-2xl sm:text-3xl">
-            {t.servicesIntro}
-          </h2>
-          <div className="border-b border-line">
-            {t.services.map((service) => (
-              <article
-                key={service.n}
-                className="border-t border-line py-8 sm:grid sm:grid-cols-12 sm:gap-6 sm:py-10"
-              >
-                <p className="font-mono text-sm text-amber tabular-nums sm:col-span-1">{service.n}</p>
-                <h3 className="mt-3 font-mono text-xl leading-snug sm:col-span-4 sm:mt-0">
-                  {service.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-muted sm:col-span-7 sm:mt-0">{service.body}</p>
-              </article>
-            ))}
+          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
+            <div className="mb-12 max-w-2xl">
+              <p className="font-mono text-xs tracking-[0.2em] text-copper">{t.servicesLabel}</p>
+              <h2 id="services-heading" className="mt-3 text-display text-fg">
+                {t.servicesIntro}
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+              {t.services.map((service) => (
+                <article
+                  key={service.n}
+                  className="group rounded-xl border border-line bg-base p-6 transition-colors hover:border-pine/35 hover:bg-pine-soft/40 sm:p-7"
+                >
+                  <p className="font-mono text-xs tabular-nums tracking-wider text-copper">
+                    {service.n}
+                  </p>
+                  <h3 className="mt-4 text-xl font-medium leading-snug tracking-tight text-fg">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{service.body}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
+        {/* How we work — dark band */}
         <section
           id="approach"
-          className="scroll-mt-20 border-t border-line"
+          className="scroll-mt-[5rem] bg-ink text-base"
           aria-labelledby="approach-heading"
         >
-          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
-            <p className="font-mono text-xs tracking-widest text-muted">{t.approachLabel}</p>
-            <h2 id="approach-heading" className="mt-4 font-mono text-2xl sm:text-3xl">
+          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
+            <p className="font-mono text-xs tracking-[0.2em] text-copper">{t.approachLabel}</p>
+            <h2 id="approach-heading" className="mt-3 text-display text-base">
               {t.approachTitle}
             </h2>
-            <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
-              {t.approachPoints.map((point) => (
-                <div key={point.title}>
-                  <h3 className="font-mono text-base leading-snug">{point.title}</h3>
-                  <p className="mt-3 leading-relaxed text-muted">{point.body}</p>
+            <div className="mt-12 grid gap-4 sm:grid-cols-3 sm:gap-5">
+              {t.approachPoints.map((point, i) => (
+                <div
+                  key={point.title}
+                  className="rounded-xl border border-ink-line bg-ink/80 p-6 sm:p-7"
+                >
+                  <p className="font-mono text-xs tabular-nums tracking-wider text-copper">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-4 text-lg font-medium leading-snug text-base">
+                    {point.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-muted">{point.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Contact */}
         <section
           id="contact"
-          className="scroll-mt-20 border-t border-line"
+          className="scroll-mt-[5rem] border-t border-line"
           aria-labelledby="contact-heading"
         >
-          <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-            <p className="font-mono text-xs tracking-widest text-amber">{t.contactLabel}</p>
-            <h2 id="contact-heading" className="mt-4 font-mono text-3xl sm:text-4xl">
-              {t.contactTitle}
-            </h2>
-            <p className="mt-4 max-w-lg text-lg text-muted">{t.contactLede}</p>
-            <ul className="mt-10 space-y-3 text-lg">
-              <li>
-                <a
-                  className="underline decoration-line underline-offset-4 hover:decoration-amber"
-                  href="mailto:hello@azomega.lv"
-                >
-                  hello@azomega.lv
-                </a>
-              </li>
-              <li className="font-mono text-base text-muted">+371 ···· ····</li>
-              <li className="pt-2 font-mono text-xs tracking-widest text-muted">{t.place}</li>
-            </ul>
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:items-stretch">
+            <div className="flex flex-col justify-center">
+              <p className="font-mono text-xs tracking-[0.2em] text-copper">{t.contactLabel}</p>
+              <h2 id="contact-heading" className="mt-3 text-display text-fg">
+                {t.contactTitle}
+              </h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-muted">{t.contactLede}</p>
+              <ul className="mt-10 space-y-4">
+                <li>
+                  <a
+                    className="text-lg font-medium text-fg underline decoration-line underline-offset-4 transition-colors hover:decoration-pine"
+                    href="mailto:hello@azomega.lv"
+                  >
+                    hello@azomega.lv
+                  </a>
+                </li>
+                <li className="font-mono text-sm tracking-wide text-muted">
+                  {t.contactPhoneNote}
+                </li>
+                <li className="font-mono text-xs tracking-[0.2em] text-muted">{t.place}</li>
+              </ul>
+            </div>
+            <div className="flex flex-col justify-between rounded-2xl border border-line bg-base-soft/70 p-8 sm:p-10">
+              <div>
+                <h3 className="text-xl font-medium tracking-tight text-fg">
+                  {t.contactPanelTitle}
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted">{t.contactPanelBody}</p>
+              </div>
+              <a
+                href="mailto:hello@azomega.lv?subject=Site%20inquiry"
+                className="mt-10 inline-flex h-12 w-full items-center justify-center rounded-md bg-pine px-6 text-sm font-medium tracking-wide text-base transition-colors hover:bg-pine-deep sm:w-auto"
+              >
+                {t.contactPanelCta}
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-5 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+      <footer className="border-t border-line bg-base-soft/50">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-8 lg:px-10">
           <Mark />
           <p className="font-mono text-xs tracking-wide text-muted">{t.footer}</p>
         </div>

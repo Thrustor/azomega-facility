@@ -1,16 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-base: #070707;
-  --color-fg: #f2efe8;
-  --color-muted: #9c978c;
-  --color-line: #2c2c2c;
-  --color-amber: #e3a008;
+  --color-base: #f4f0e8;
+  --color-base-soft: #ebe6db;
+  --color-fg: #1c1b18;
+  --color-muted: #5e5b53;
+  --color-line: #d4cfc3;
+  --color-pine: #2f4532;
+  --color-pine-deep: #243628;
+  --color-pine-soft: #e4ebe4;
+  --color-copper: #9a6b3f;
+  --color-ink: #161814;
+  --color-ink-muted: #a8aea6;
+  --color-ink-line: #2c332e;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
-  --text-hero: clamp(2.75rem, 8vw, 5.25rem);
-  --text-hero--line-height: 0.95;
-  --text-hero--letter-spacing: -0.03em;
+  --text-hero: clamp(2.85rem, 7.5vw, 5.5rem);
+  --text-hero--line-height: 0.98;
+  --text-hero--letter-spacing: -0.035em;
+  --text-display: clamp(1.85rem, 3.5vw, 2.75rem);
+  --text-display--line-height: 1.15;
+  --text-display--letter-spacing: -0.025em;
 }
 
 @layer base {
@@ -25,13 +35,14 @@
     background: var(--color-base);
     color: var(--color-fg);
     font-family: var(--font-sans);
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   h1,
   h2,
   h3 {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
+    font-weight: 500;
     text-wrap: balance;
   }
 
@@ -45,12 +56,12 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-amber);
+    outline: 2px solid var(--color-pine);
     outline-offset: 3px;
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-amber) 35%, var(--color-base));
+    background: color-mix(in srgb, var(--color-pine) 28%, var(--color-base));
     color: var(--color-fg);
   }
 
@@ -58,5 +69,32 @@
     html {
       scroll-behavior: auto;
     }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    opacity: 0.035;
+    pointer-events: none;
+  }
+
+  .arch-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-line) 70%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 70%, transparent) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, black 20%, transparent 75%);
+    pointer-events: none;
   }
 }
