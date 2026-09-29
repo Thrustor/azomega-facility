@@ -416,8 +416,8 @@ export function SitePage() {
                   <dd className="mt-2 font-mono text-lg tracking-wide text-muted">{t.contactPhoneNote}</dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-xs tracking-[0.18em] text-copper">{t.place}</dt>
-                  <dd className="mt-2 text-muted">Latvia</dd>
+                  <dt className="sr-only">Location</dt>
+                  <dd className="font-mono text-xs tracking-[0.2em] text-muted">{t.place}</dd>
                 </div>
               </dl>
             </div>
